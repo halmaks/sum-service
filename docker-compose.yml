@@ -1,0 +1,12 @@
+version: "3.1"
+
+services:
+  mariadb:
+    image: mariadb:10.4
+    environment:
+      MYSQL_ROOT_PASSWORD: root-password
+      MYSQL_USER: halmaks
+      MYSQL_PASSWORD: password
+      MYSQL_DATABASE: task
+    ports:
+      - 3306:3306
