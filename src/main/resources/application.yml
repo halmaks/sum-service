@@ -1,0 +1,22 @@
+spring:
+  datasource:
+    driver-class-name: org.mariadb.jdbc.Driver
+    url: jdbc:mysql://localhost:3306/task
+    username: halmaks
+    password: password
+
+  jpa:
+    properties:
+      hibernate:
+        ddl-auto: create-drop
+    show-sql: true
+
+services:
+  response:
+    descriptions:
+      0: OK
+      1: NOT FOUND
+      2: ALREADY EXISTS
+      3: ERROR
+      4: CLIENT ERROR
+      5: BAD REQUEST
