@@ -3,6 +3,7 @@ package com.halmaks.sumservice.handlers;
 import com.halmaks.sumservice.exceptions.AlreadyExistsException;
 import com.halmaks.sumservice.models.Response;
 import com.halmaks.sumservice.services.RequestDescriptionService;
+import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.converter.HttpMessageNotReadableException;
 import org.springframework.web.bind.MethodArgumentNotValidException;
@@ -15,12 +16,9 @@ import javax.ws.rs.ClientErrorException;
 import javax.ws.rs.NotFoundException;
 
 @RestControllerAdvice
+@RequiredArgsConstructor
 public class GlobalExceptionHandler {
     private final RequestDescriptionService descriptionService;
-
-    public GlobalExceptionHandler(final RequestDescriptionService descriptionService) {
-        this.descriptionService = descriptionService;
-    }
 
     @ExceptionHandler(value = AlreadyExistsException.class)
     @ResponseStatus(HttpStatus.BAD_REQUEST)

@@ -5,21 +5,17 @@ import com.halmaks.sumservice.models.Item;
 import com.halmaks.sumservice.models.SumResponse;
 import com.halmaks.sumservice.models.Response;
 import com.halmaks.sumservice.repositories.ItemRepository;
+import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
 import javax.transaction.Transactional;
 import javax.ws.rs.NotFoundException;
 
 @Service
+@RequiredArgsConstructor
 public class ItemService {
     private final ItemRepository itemRepository;
     private final RequestDescriptionService descriptionService;
-
-    public ItemService(final ItemRepository itemRepository,
-                       final RequestDescriptionService descriptionService) {
-        this.itemRepository = itemRepository;
-        this.descriptionService = descriptionService;
-    }
 
     public Item getByName(final String name) {
         return itemRepository.findById(name)

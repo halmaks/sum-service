@@ -7,25 +7,19 @@ import com.halmaks.sumservice.models.Item;
 import com.halmaks.sumservice.models.SumResponse;
 import com.halmaks.sumservice.models.Response;
 import com.halmaks.sumservice.services.ItemService;
+import lombok.RequiredArgsConstructor;
 import org.springframework.core.convert.ConversionService;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import javax.validation.Valid;
 
 @RestController
-@RequestMapping
+@RequiredArgsConstructor
 public class ItemController {
     private final ItemService itemService;
     private final ConversionService conversionService;
-
-    public ItemController(final ItemService itemService,
-                          final ConversionService conversionService) {
-        this.itemService = itemService;
-        this.conversionService = conversionService;
-    }
 
     @PostMapping("/add")
     public Response add(@Valid @RequestBody final ItemCreateDto itemDto) {
