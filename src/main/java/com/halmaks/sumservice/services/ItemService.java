@@ -1,5 +1,6 @@
 package com.halmaks.sumservice.services;
 
+import com.halmaks.sumservice.annotation.Marker;
 import com.halmaks.sumservice.exceptions.AlreadyExistsException;
 import com.halmaks.sumservice.models.Item;
 import com.halmaks.sumservice.models.SumResponse;
@@ -40,6 +41,7 @@ public class ItemService {
         return getResponseByCode(0);
     }
 
+    @Marker
     @Transactional
     public SumResponse sum(final String first, final String second) {
         final int firstValue = getByName(first).getValue();
