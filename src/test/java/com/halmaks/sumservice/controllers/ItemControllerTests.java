@@ -94,16 +94,16 @@ public class ItemControllerTests {
     }
 
     @Test
-    public void shouldReturnCode1AndDescriptionNotFoundWhenThereIsNoItemNamedSix() throws Exception {
+    public void shouldReturnCode0AndSum1000AndDescriptionOkWhenThereIsNoItemNamedSix() throws Exception {
         final var request = post("/sum")
                 .contentType(MediaType.APPLICATION_JSON)
                 .content("{\"first\":\"one\",\"second\":\"six\"}");
         final var response = mvc.perform(request)
-                .andExpect(status().isNotFound())
+                .andExpect(status().isOk())
                 .andReturn()
                 .getResponse()
                 .getContentAsString(StandardCharsets.UTF_8);
 
-        assertEquals("{\"code\":1,\"description\":\"NOT FOUND\"}", response);
+        assertEquals("{\"sum\":1000,\"code\":0,\"description\":\"OK\"}", response);
     }
 }
